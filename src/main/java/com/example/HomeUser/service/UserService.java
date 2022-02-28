@@ -12,13 +12,12 @@ import java.util.List;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-    private Object User;
 
     public List<User> getAllUsers(){
-        return new ArrayList<>(userRepository.getAllUsers());
+        return userRepository.findAll();
 
     }
     public void saveUsers(User user){
-        userRepository.createuser(user);
+        userRepository.save(user);
     }
 }

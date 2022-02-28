@@ -2,12 +2,12 @@ package com.example.HomeUser.controller;
 
 import com.example.HomeUser.model.User;
 import com.example.HomeUser.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,24 +16,39 @@ public class UserControllers {
     @Autowired
     UserService userService;
     @Autowired
-    User user;
+    ObjectMapper objectMapper;
 
     @GetMapping("/users")
-    public String getUsers(Model model){
+    public String getAllUsers(){
         List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("User",allUsers);
-        return allUsers.toString();
+        try {
+            return objectMapper.writeValueAsString(userService.getAllUsers());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } return String.valueOf(allUsers);
     }
 
-    @GetMapping("/newusers")
-    public String createUser (Model model){
-        model.addAttribute("user",new User());
-        return String.valueOf(userService.getAllUsers());
+    @GetMapping("/user/{id}")
+    public String getUser(@PathVariable long id) {
+        List<User> allUsersId = userService.getAllUsers();
+        getUser(id);
+        try {
+            return objectMapper.writeValueAsString(userService.getAllUsers());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(allUsersId);
     }
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
-    public String saveuser(User user){
-        userService.saveUsers(user);
-        return "redirect:/users";
+
+    @PostMapping("/newUser")
+    public String newUser(@RequestBody String newUserJson){
+        try{
+            User user = objectMapper.readValue(newUserJson, User.class);
+            userService.saveUsers(user);
+        }catch (Exception e){
+            return String.valueOf(HttpStatus.NOT_FOUND);
+        }
+        return String.valueOf(HttpStatus.OK);
     }
 
 

@@ -16,4 +16,4 @@ public class HomeUserApplication {
 		SpringApplication.run(HomeUserApplication.class, args);
 
 	}
-	}
+}
