@@ -12,10 +12,23 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Component
+@Entity
 public class User {
-   private String name;
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    private String name;
    private String surname;
    private int age;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public User(String name, String surname, int age) {
         this.name = name;

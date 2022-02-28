@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
-public class HomeUserApplication {
+public class HomeUserApplication{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
