@@ -4,6 +4,7 @@ import com.example.HomeUser.model.User;
 import com.example.HomeUser.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -51,6 +52,12 @@ public class UserControllers {
         }
         return String.valueOf(HttpStatus.OK);
     }
-
-
+    @DeleteMapping("/user/{id}")
+    public String deleteUser(@PathVariable Long id) {
+       boolean delete = userService.delete(id);
+        if (delete == true) {
+            return null;
+        }
+        return String.valueOf(HttpStatus.NOT_FOUND);
+    }
 }

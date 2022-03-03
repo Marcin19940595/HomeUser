@@ -5,7 +5,6 @@ import com.example.HomeUser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,5 +18,10 @@ public class UserService {
     }
     public void saveUsers(User user){
         userRepository.save(user);
+    }
+
+    public boolean delete(Long id) {
+        userRepository.deleteById(id);
+        return false;
     }
 }
