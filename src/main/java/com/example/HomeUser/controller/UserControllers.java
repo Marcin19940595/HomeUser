@@ -56,7 +56,7 @@ public class UserControllers {
     public String deleteUser(@PathVariable Long id) {
        boolean delete = userService.delete(id);
         if (delete == true) {
-            return null;
+            return ("Usunięto użytkownika o id " + id);
         }
         return String.valueOf(HttpStatus.NOT_FOUND);
     }

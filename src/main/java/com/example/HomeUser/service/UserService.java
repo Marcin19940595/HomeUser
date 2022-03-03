@@ -22,6 +22,6 @@ public class UserService {
 
     public boolean delete(Long id) {
         userRepository.deleteById(id);
-        return false;
+        return Boolean.parseBoolean(null);
     }
 }
