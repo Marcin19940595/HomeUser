@@ -15,9 +15,7 @@ public class Question {
 
     private String question;
     private String odpA;
-    private String odbB;
     private String odpC;
-    private String odpD;
 
 
     public long getId() {
@@ -30,12 +28,10 @@ public class Question {
     public Question() {
     }
 
-    public Question(String question, String odpA, String odbB, String odpC, String odpD) {
+    public Question(String question, String odpA, String odpC) {
         this.question = question;
         this.odpA = odpA;
-        this.odbB = odbB;
         this.odpC = odpC;
-        this.odpD = odpD;
     }
 
     public String getQuestion() {
@@ -54,14 +50,6 @@ public class Question {
         this.odpA = odpA;
     }
 
-    public String getOdbB() {
-        return odbB;
-    }
-
-    public void setOdbB(String odbB) {
-        this.odbB = odbB;
-    }
-
     public String getOdpC() {
         return odpC;
     }
@@ -70,22 +58,13 @@ public class Question {
         this.odpC = odpC;
     }
 
-    public String getOdpD() {
-        return odpD;
-    }
-
-    public void setOdpD(String odpD) {
-        this.odpD = odpD;
-    }
-
     @Override
     public String toString() {
         return "Question{" +
-                "question='" + question + '\'' +
+                "id=" + id +
+                ", question='" + question + '\'' +
                 ", odpA='" + odpA + '\'' +
-                ", odbB='" + odbB + '\'' +
                 ", odpC='" + odpC + '\'' +
-                ", odpD='" + odpD + '\'' +
                 '}';
     }
 }
