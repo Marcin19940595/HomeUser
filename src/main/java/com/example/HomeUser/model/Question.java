@@ -15,6 +15,7 @@ public class Question {
 
     private String question;
     private String odpA;
+    private String odbB;
     private String odpC;
 
 
@@ -28,9 +29,10 @@ public class Question {
     public Question() {
     }
 
-    public Question(String question, String odpA, String odpC) {
+    public Question(String question, String odpA,String odbB, String odpC) {
         this.question = question;
         this.odpA = odpA;
+        this.odbB = odbB;
         this.odpC = odpC;
     }
 
@@ -58,12 +60,21 @@ public class Question {
         this.odpC = odpC;
     }
 
+    public String getOdbB() {
+        return odbB;
+    }
+
+    public void setOdbB(String odbB) {
+        this.odbB = odbB;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
                 "id=" + id +
                 ", question='" + question + '\'' +
                 ", odpA='" + odpA + '\'' +
+                ", odbB='" + odbB + '\'' +
                 ", odpC='" + odpC + '\'' +
                 '}';
     }
