@@ -32,6 +32,8 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+    public User() {
+    }
 
     public User(String name, String surname, int age, String city) {
         this.name = name;
@@ -40,8 +42,6 @@ public class User {
         this.city = city;
     }
 
-    public User() {
-    }
 
     public User(String name, String surname) {
 
