@@ -30,8 +30,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(long id, String question, String odpA, String odbB, String odpC, String odpD) {
-        this.id = id;
+    public Question(String question, String odpA, String odbB, String odpC, String odpD) {
         this.question = question;
         this.odpA = odpA;
         this.odbB = odbB;
