@@ -10,6 +10,8 @@ import javax.management.relation.Role;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 @Entity
@@ -24,6 +26,14 @@ public class User {
    private String surname;
    private int age;
    private String city;
+    @ManyToMany
+    @JoinTable(
+            name = "QuestionUser",
+            joinColumns = @JoinColumn(name = "questionid"),
+            inverseJoinColumns = @JoinColumn(name = "userid")
+    )
+    private Set<Question> questions = new HashSet<>();
+
 
     public Long getId() {
         return id;
