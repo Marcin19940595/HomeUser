@@ -25,7 +25,7 @@ public class QuestionService {
     }
     public Question drawQuestions() {
         List<Question> getallquestions = getAllQuestion();
-        Random random = new Random(getallquestions.size());
+        Random random = new Random(getAllQuestion().size());
         return getallquestions.get(random.nextInt());
     }
 }
