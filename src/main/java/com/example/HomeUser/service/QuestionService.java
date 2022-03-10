@@ -24,7 +24,8 @@ public class QuestionService {
         return Boolean.parseBoolean(null);
     }
     public int drawQuestions() {
-        Random random = new Random();
-        return random.nextInt(30);
+        List<Question> getallquestions = getAllQuestion();
+        Random random = new Random(getallquestions.size());
+        return random.nextInt();
     }
 }
