@@ -4,7 +4,6 @@ import com.example.HomeUser.model.Question;
 import com.example.HomeUser.service.QuestionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -58,5 +57,15 @@ public class QuestionController {
             return String.valueOf(HttpStatus.NOT_FOUND);
         }
         return String.valueOf(HttpStatus.OK);
+    }
+    @GetMapping("/drawquestions")
+    public String drawQuestions(){
+        int allQuestion = questionService.drawQuestions();
+        try {
+            return objectMapper.writeValueAsString(questionService.drawQuestions());
+        }catch (JsonProcessingException e){
+            e.printStackTrace();
+        }
+        return String.valueOf(drawQuestions());
     }
 }
