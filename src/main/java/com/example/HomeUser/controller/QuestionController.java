@@ -66,6 +66,6 @@ public class QuestionController {
         }catch (JsonProcessingException e){
             e.printStackTrace();
         }
-        return String.valueOf(drawQuestions());
+        return String.valueOf(drawQuestions);
     }
 }
