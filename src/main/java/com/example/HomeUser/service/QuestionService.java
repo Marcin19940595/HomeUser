@@ -23,9 +23,9 @@ public class QuestionService {
         questionRepository.deleteById(id);
         return Boolean.parseBoolean(null);
     }
-    public Random drawQuestions() {
-        Random random = new Random();
-        random.nextInt(getAllQuestion().size());
-        return random;
+    public Question drawQuestions() {
+        List<Question> getallquestions = getAllQuestion();
+        Random random = new Random(getallquestions.size());
+        return getallquestions.get(random.nextInt());
     }
 }
