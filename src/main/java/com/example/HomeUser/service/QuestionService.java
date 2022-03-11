@@ -5,8 +5,8 @@ import com.example.HomeUser.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 @Service
 public class QuestionService {
@@ -23,9 +23,9 @@ public class QuestionService {
         questionRepository.deleteById(id);
         return Boolean.parseBoolean(null);
     }
-    public Question drawQuestions() {
+    public String drawQuestions() {
         List<Question> getallquestions = questionRepository.findAll();
-        Random random = new Random(getAllQuestion().size());
-        return getAllQuestion().get(random.nextInt());
+        Collections.shuffle(getallquestions);
+        return String.valueOf(getallquestions);
     }
 }
