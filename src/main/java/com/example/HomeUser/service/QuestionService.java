@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class QuestionService {
@@ -24,8 +25,8 @@ public class QuestionService {
         return Boolean.parseBoolean(null);
     }
     public String drawQuestions() {
-        List<Question> getallquestions = questionRepository.findAll();
-        Collections.shuffle(getallquestions);
-        return String.valueOf(getallquestions);
+        Random random = new Random();
+        random.nextInt(getAllQuestion().size());
+        return drawQuestions();
     }
 }
