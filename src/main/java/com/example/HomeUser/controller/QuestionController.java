@@ -60,7 +60,7 @@ public class QuestionController {
     }
     @GetMapping("/drawquestions")
     public String drawQuestions(){
-        String drawQuestions = questionService.drawQuestions();
+        Question drawQuestions = questionService.drawQuestions();
         try {
             return objectMapper.writeValueAsString(questionService.drawQuestions());
         }catch (JsonProcessingException e){

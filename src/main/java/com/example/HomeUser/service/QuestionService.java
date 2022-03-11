@@ -5,7 +5,6 @@ import com.example.HomeUser.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -24,9 +23,9 @@ public class QuestionService {
         questionRepository.deleteById(id);
         return Boolean.parseBoolean(null);
     }
-    public String drawQuestions() {
-        Random random = new Random();
-        random.nextInt(getAllQuestion().size());
-        return drawQuestions();
+    public Question drawQuestions() {
+        Random random = new Random(getAllQuestion().size());
+        int draw = random.nextInt(getAllQuestion().size());
+        return getAllQuestion().get(draw);
     }
 }
