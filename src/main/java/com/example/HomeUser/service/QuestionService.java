@@ -26,6 +26,6 @@ public class QuestionService {
     public Question drawQuestions() {
         Random random = new Random(getAllQuestion().size());
         int draw = random.nextInt(getAllQuestion().size());
-        return getAllQuestion().get(draw);
+        return questionRepository.getById(drawQuestions().getId());
     }
 }
