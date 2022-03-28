@@ -59,8 +59,13 @@ public class QuestionController {
         return String.valueOf(HttpStatus.OK);
     }
     @GetMapping("/drawquestions")
-    public String drawQuestions(@PathVariable long id){
-        List<Question> allquestionid = (List<Question>) questionService.drawQuestions();
-        return String.valueOf(allquestionid);
+    public String drawQuestions(){
+        Question drawQuestions = questionService.drawQuestions();
+        try {
+            return objectMapper.writeValueAsString(questionService.drawQuestions());
+        }catch (JsonProcessingException e){
+            e.printStackTrace();
+        }
+        return String.valueOf(drawQuestions());z
     }
 }
