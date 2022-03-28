@@ -5,7 +5,6 @@ import com.example.HomeUser.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
 import java.util.List;
 import java.util.Random;
 
@@ -27,6 +26,6 @@ public class QuestionService {
     public Question drawQuestions() {
         Random random = new Random(getAllQuestion().size());
         int draw = random.nextInt(getAllQuestion().size());
-        return questionRepository.findById();
+        return getAllQuestion().get(draw);
     }
 }
