@@ -10,5 +10,4 @@ import java.util.Random;
 @Repository
 @EnableJpaRepositories
 public interface QuestionRepository extends JpaRepository<Question,Long> {
-    Question findById();
 }
