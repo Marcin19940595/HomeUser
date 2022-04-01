@@ -1,22 +1,18 @@
 package com.example.HomeUser.model;
 
-import lombok.Generated;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.GenerationTime;
 import org.springframework.stereotype.Component;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "users",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+public class User implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +22,8 @@ public class User {
     private String surname;
     private int age;
     private String city;
+    private String email;
+    private String password;
     @ManyToMany
     @JoinTable(
             name = "QuestionUser",
@@ -33,6 +31,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "userid")
     )
     private Set<Question> questions = new HashSet<>();
+
+    public <T> User(String name, String email, String encode, List<T> role_user) {
+
+    }
 
 
     public Long getId() {
@@ -45,11 +47,13 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, int age, String city) {
+    public User(String name, String surname, int age, String city, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.city = city;
+        this.email = email;
+        this.password = password;
     }
 
 
@@ -89,6 +93,22 @@ public class User {
         this.city = city;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -96,5 +116,9 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", age=" + age + '\'' + ",city =" + city +
                 '}';
+    }
+
+    public Collection<Role> getRoles() {
+        return null;
     }
 }
