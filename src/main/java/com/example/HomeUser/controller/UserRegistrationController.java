@@ -14,11 +14,11 @@ public class UserRegistrationController {
     @Autowired
     UserService userService;
 
-    @ModelAttribute
+    @ModelAttribute("user")
     public UserRegistrationDto userRegistrationDto(){
         return new UserRegistrationDto();
     }
-    @GetMapping
+    @GetMapping("/registry")
     public String showRegistrationForm(){
         return "registration";
     }
