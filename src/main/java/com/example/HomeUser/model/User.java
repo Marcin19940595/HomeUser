@@ -26,6 +26,8 @@ public class User {
     private String surname;
     private int age;
     private String city;
+    private String login;
+    private String password;
     @ManyToMany
     @JoinTable(
             name = "QuestionUser",
@@ -45,11 +47,13 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, int age, String city) {
+    public User(String name, String surname, int age, String city, String login, String password) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.city = city;
+        this.login = login;
+        this.password = password;
     }
 
 
@@ -87,6 +91,22 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

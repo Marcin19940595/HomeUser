@@ -6,7 +6,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.Collections;
 
 @SpringBootApplication
 public class HomeUserApplication{
@@ -16,5 +20,14 @@ public class HomeUserApplication{
 	public static void main(String[] args) {
 		SpringApplication.run(HomeUserApplication.class, args);
 
+	}
+	@Bean
+	public FilterRegistrationBean filterRegistrationBean()
+	{
+		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+		filterRegistrationBean.setFilter(new JWTFilter());
+		filterRegistrationBean.addUrlPatterns("/questions");
+		filterRegistrationBean.setUrlPatterns(Collections.singleton("/users"));
+		return filterRegistrationBean;
 	}
 }
