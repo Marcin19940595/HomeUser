@@ -21,7 +21,7 @@ public class LoginApi {
                 .setSubject(user.getLogin())
                 .claim("roles", "user")
                 .setIssuedAt(new Date(currentTimeMillis))
-                .setExpiration(new Date(currentTimeMillis + 30000))
+                .setExpiration(new Date(currentTimeMillis + 21600000))
                 .signWith(SignatureAlgorithm.HS512, user.getPassword())
                 .compact();
     }

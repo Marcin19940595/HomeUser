@@ -26,8 +26,8 @@ public class HomeUserApplication{
 	{
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
 		filterRegistrationBean.setFilter(new JWTFilter());
-		filterRegistrationBean.addUrlPatterns("/questions");
-		filterRegistrationBean.setUrlPatterns(Collections.singleton("/users"));
+		filterRegistrationBean.addUrlPatterns("/questions","/question/{id}","/newQuestion","/question/{id}","/drawquestions","/score","/score/{id}","/users","/user/{id}","/newUser","/user/{id}");
+		//filterRegistrationBean.setUrlPatterns(Collections.singleton("/users"));
 		return filterRegistrationBean;
 	}
 }
