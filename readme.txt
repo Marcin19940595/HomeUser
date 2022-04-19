@@ -6,6 +6,7 @@ Jeżeli użytkownik będzie chciał to może zagrać w grę podobna do teleturni
 Lista endpointów:
 Niektóre endpointy sa zabezpieczone tokenami. Są to Bearer Token.
 
+Link do apki: 
 https://aplikacja555.herokuapp.com/...
 
 1. /login -	Generuje token. Request powinien wygladać tak:
